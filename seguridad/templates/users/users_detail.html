@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-capitalize">{{ user }}</h1>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="POST" class="d-inline">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if error %}
+                    <div class="alert alert-danger mt-3">{{ error }}</div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary mt-3">Update</button>
+            </form>
+            <form method="POST" action="{% url 'users_delete' user.id %}" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger mt-3">Delete</button>
+            </form>
+            <a href="{% url 'users_list' %}" class="btn btn-secondary mt-3">Go back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

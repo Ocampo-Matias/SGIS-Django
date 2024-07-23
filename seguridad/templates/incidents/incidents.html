@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">incidents</h1>
+    <nav>
+        <ul class="nav nav-pills flex-column">
+
+            <li class="nav-item"><a class="nav-link" href="{% url 'incident_new' %}">New incidents</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'incident_in_progress' %}">Incidents in progress</a>
+            </li>
+            {% if request.user.role == 'upper_level' or request.user.role == 'medium_level' %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'incident_resolver' %}">Resolved incidents</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'incident_closed' %}">Closed incidents</a></li>
+            {% endif %}
+
+        </ul>
+
+    </nav>
+</div>
+
+{% endblock %}

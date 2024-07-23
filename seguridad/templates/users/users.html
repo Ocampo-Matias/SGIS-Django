@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Users</h1>
+
+    <nav>
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'users_upper_level' %}">Users Upper Level</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'users_medium_level' %}">Users Medium Level</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'users_low_level' %}">Users Low Level</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+{% endblock %}

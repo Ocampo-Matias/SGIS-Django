@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Create Incident</h1>
+
+    <form action="{% url 'create_incident' %}" method="POST" class="mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if error %}
+        <div class="alert alert-danger mt-3">{{ error }}</div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary mt-3">Save</button>
+    </form>
+</div>
+{% endblock %}

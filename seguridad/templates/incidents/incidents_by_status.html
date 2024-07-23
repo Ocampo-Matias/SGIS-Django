@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Incidents {{ state|capfirst }}</h1>
+
+    <ul class="list-group">
+        {% for incident in incidents %}
+        <li class="list-group-item">
+            <a href="{% url 'incident_detail' incident.incident_id %}" class="text-decoration-none">
+                <h3 class="mb-1">{{ incident.incident_type|capfirst }}</h3>
+                <h4 class="mb-2 text-muted">Incident number : {{ incident.incident_id }}</h4>
+                <p class="mb-1"><strong>Assigned to:</strong> {{ incident.assigned_to|capfirst }}</p>
+                <p class="mb-1"><strong>Priority:</strong> {{ incident.priority }}</p>
+                <p class="mb-1"><strong>Description:</strong> {{ incident.description }}</p>
+                <p class="mb-0"><strong>Date Time:</strong> {{ incident.date_time }}</p>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="mt-4">
+        <a href="{% url 'incidents_list' %}" class="btn btn-secondary">Go back</a>
+    </div>
+</div>
+{% endblock %}
